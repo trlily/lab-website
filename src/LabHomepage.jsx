@@ -111,41 +111,56 @@ const PUBLICATIONS = [
   },
 ];
 
+/* 직급별 그룹 구조. 같은 그룹 안의 사람은 people 배열에 순서대로.
+ * 사진은 placeholder — 실제 사진 URL로 교체하면 자동 반영됩니다.
+ * nameEn / email은 비워둬도 OK (값이 있는 경우만 표시됨). */
 const MEMBERS = [
   {
-    name: "Prof. Seung-Won Lee, M.D., Ph.D.",
-    role: "Principal Investigator",
-    affiliation: "Department of Nuclear Medicine, Severance Hospital",
-    photo: "https://placehold.co/240x240/003876/ffffff?text=PI",
-    email: "pi@yuhs.ac",
+    group: "Professor",
+    people: [
+      {
+        name: "윤미진",
+        nameEn: "Mijin Yun, M.D., Ph.D.",
+        role: "Principal Investigator",
+        photo: "https://placehold.co/240x240/003876/ffffff?text=Photo",
+        email: "",
+      },
+    ],
   },
   {
-    name: "Gyuyoung Kim, Ph.D.",
-    role: "Postdoctoral Researcher",
-    affiliation: "Brain Imaging & AI Lab",
-    photo: "https://placehold.co/240x240/0a4d8c/ffffff?text=Postdoc",
-    email: "gy@yuhs.ac",
+    group: "Research Professor",
+    people: [
+      {
+        name: "이상원",
+        nameEn: "Sangwon Lee",
+        role: "Research Professor",
+        photo: "https://placehold.co/240x240/0a4d8c/ffffff?text=Photo",
+        email: "",
+      },
+    ],
   },
   {
-    name: "Jihoon Park",
-    role: "Ph.D. Student",
-    affiliation: "Graduate School of Medical Science",
-    photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=PhD",
-    email: "jhpark@yuhs.ac",
+    group: "Student Researchers",
+    people: [
+      { name: "김대성", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "김가연", nameEn: "Gayeon Kim", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "gayeonkim@yuhs.ac" },
+      { name: "강희지", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "이상민", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "고현진", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+    ],
   },
   {
-    name: "Minseo Cho",
-    role: "M.S. Student",
-    affiliation: "Graduate School of Medical Science",
-    photo: "https://placehold.co/240x240/3b82c4/ffffff?text=MS",
-    email: "mscho@yuhs.ac",
-  },
-  {
-    name: "Hyunwoo Yang",
-    role: "Research Assistant",
-    affiliation: "Brain Imaging & AI Lab",
-    photo: "https://placehold.co/240x240/5e9ed6/ffffff?text=RA",
-    email: "hyang@yuhs.ac",
+    group: "Researchers",
+    people: [
+      { name: "김남헌", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "이명오", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "이승준", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "홍슬기", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "이민지", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "장나경", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "강성진", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "임현경", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+    ],
   },
 ];
 
@@ -426,31 +441,53 @@ function Members() {
         <SectionHeader
           eyebrow="Team"
           title="Lab Members"
-          description="A multidisciplinary team of physicians, engineers, and scientists."
+          description="A multidisciplinary team of clinicians, engineers, and scientists."
         />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {MEMBERS.map((m) => (
-            <div
-              key={m.email}
-              className="text-center group"
-            >
-              <div className="aspect-square rounded-2xl overflow-hidden bg-slate-100 ring-1 ring-slate-200 group-hover:ring-[#003876] transition-all">
-                <img
-                  src={m.photo}
-                  alt={m.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                />
+        <div className="space-y-16">
+          {MEMBERS.map((group) => (
+            <div key={group.group}>
+              <div className="flex items-baseline gap-4 mb-8">
+                <h3 className="text-xl font-bold text-[#003876] whitespace-nowrap">
+                  {group.group}
+                </h3>
+                <div className="flex-1 h-px bg-slate-200" />
+                <span className="text-xs text-slate-500 font-mono">
+                  {group.people.length}
+                </span>
               </div>
-              <div className="mt-4">
-                <div className="font-semibold text-slate-900 text-sm leading-tight">
-                  {m.name}
-                </div>
-                <div className="text-xs text-[#003876] mt-1 font-medium">
-                  {m.role}
-                </div>
-                <div className="text-[11px] text-slate-500 mt-1 leading-snug">
-                  {m.affiliation}
-                </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                {group.people.map((m) => (
+                  <div key={m.name} className="text-center group">
+                    <div className="aspect-square rounded-2xl overflow-hidden bg-slate-100 ring-1 ring-slate-200 group-hover:ring-[#003876] transition-all">
+                      <img
+                        src={m.photo}
+                        alt={m.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      />
+                    </div>
+                    <div className="mt-4">
+                      <div className="font-semibold text-slate-900 text-sm leading-tight">
+                        {m.name}
+                      </div>
+                      {m.nameEn && (
+                        <div className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                          {m.nameEn}
+                        </div>
+                      )}
+                      <div className="text-xs text-[#003876] mt-1 font-medium">
+                        {m.role}
+                      </div>
+                      {m.email && (
+                        <a
+                          href={`mailto:${m.email}`}
+                          className="text-[11px] text-slate-500 hover:text-[#003876] mt-1 inline-block break-all"
+                        >
+                          {m.email}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
