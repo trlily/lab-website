@@ -134,7 +134,6 @@ const MEMBERS = [
       { name: "이명오", nameEn: "Myeongoh Lee", role: "Researcher", photo: import.meta.env.BASE_URL + "members/myeongoh.png", email: "" },
       { name: "이승준", nameEn: "Seungjun Lee", role: "Researcher", photo: import.meta.env.BASE_URL + "members/seungjun.png", email: "" },
       { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/nakyung.png", email: "", photoPos: "center" },
-      { name: "강성진", nameEn: "Sungjin Kang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/sungjin.png", email: "" },
       { name: "임현경", nameEn: "Hyunkyung Lim", role: "Researcher", photo: import.meta.env.BASE_URL + "members/hyunkyung.png", email: "" },
     ],
   },
