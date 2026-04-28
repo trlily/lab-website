@@ -112,7 +112,7 @@ const MEMBERS = [
         name: "이상원",
         nameEn: "Sangwon Lee",
         role: "Research Assistant Professor",
-        photo: "https://placehold.co/240x240/0a4d8c/ffffff?text=Photo",
+        photo: import.meta.env.BASE_URL + "members/sangwon.png",
         email: "",
         url: "https://medicine.yonsei.ac.kr/medicine/profile-view.do?empNo=eXVoczIwMjBAKUApNMQSi1oWFfhmVaDPDRNLN795J3uI64y4oHOVU1inClE%3D",
       },
@@ -121,24 +121,21 @@ const MEMBERS = [
   {
     group: "Student Researchers",
     people: [
-      { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD Student", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD Student", photo: import.meta.env.BASE_URL + "members/daesung.png", email: "" },
       { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD Student", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9" },
-      { name: "강희지", nameEn: "Heeji Kang", role: "MS", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/sangmin.png", email: "" },
-      { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
+      { name: "강희지", nameEn: "Heeji Kang", role: "MS", photo: import.meta.env.BASE_URL + "members/heeji.png", email: "" },
+      { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate Student", photo: import.meta.env.BASE_URL + "members/sangmin.png", email: "" },
+      { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate Student", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
     ],
   },
   {
     group: "Researchers",
     people: [
-      { name: "연구원 김", nameEn: "Researcher Kim", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "연구원 홍", nameEn: "Researcher Hong", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "이명오", nameEn: "Myeongoh Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "이승준", nameEn: "Seungjun Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "이민지", nameEn: "Minji Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "강성진", nameEn: "Sungjin Kang", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "임현경", nameEn: "Hyunkyung Lim", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "이명오", nameEn: "Myeongoh Lee", role: "Researcher", photo: import.meta.env.BASE_URL + "members/myeongoh.png", email: "" },
+      { name: "이승준", nameEn: "Seungjun Lee", role: "Researcher", photo: import.meta.env.BASE_URL + "members/seungjun.png", email: "" },
+      { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/nakyung.png", email: "" },
+      { name: "강성진", nameEn: "Sungjin Kang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/sungjin.png", email: "" },
+      { name: "임현경", nameEn: "Hyunkyung Lim", role: "Researcher", photo: import.meta.env.BASE_URL + "members/hyunkyung.png", email: "" },
     ],
   },
 ];
@@ -940,15 +937,9 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Contact</h4>
+            <h4 className="text-white font-semibold text-sm mb-4">Address</h4>
             <ul className="space-y-2 text-sm text-blue-200">
               <li>{LAB_INFO.address}</li>
-              <li>
-                <a href={`mailto:${LAB_INFO.email}`} className="hover:text-white">
-                  {LAB_INFO.email}
-                </a>
-              </li>
-              <li>{LAB_INFO.phone}</li>
             </ul>
           </div>
 
