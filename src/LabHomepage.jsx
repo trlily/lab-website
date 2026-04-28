@@ -387,20 +387,15 @@ function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
-          {/* MIND Lab — large brand mark */}
-          <h1 className="text-7xl md:text-[10rem] font-black tracking-tight leading-none flex flex-wrap items-end gap-x-4 md:gap-x-6">
-            <span className="inline-flex items-end">
-              <span className="inline-block">M</span>
-              <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
-              <span className="inline-block">I</span>
-              <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
-              <span className="inline-block">N</span>
-              <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
-              <span className="inline-block">D</span>
-            </span>
-            <span className="text-3xl md:text-6xl font-light text-blue-200 tracking-tight pb-2 md:pb-6">
-              Lab
-            </span>
+          {/* MIND — large brand mark */}
+          <h1 className="text-7xl md:text-[10rem] font-black tracking-tight leading-none">
+            <span className="inline-block">M</span>
+            <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
+            <span className="inline-block">I</span>
+            <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
+            <span className="inline-block">N</span>
+            <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
+            <span className="inline-block">D</span>
           </h1>
 
           {/* Acronym reveal */}
