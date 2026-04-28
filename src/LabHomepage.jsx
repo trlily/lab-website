@@ -319,23 +319,111 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-[#003876] via-[#0a4d8c] to-[#1f6dbf] text-white"
+      className="relative overflow-hidden bg-[#001428] text-white"
     >
-      {/* placeholder background image overlay */}
+      {/* Layer 1: Mesh radial gradient — adds organic, dimensional depth */}
       <div
-        className="absolute inset-0 opacity-20 mix-blend-overlay"
+        className="absolute inset-0"
         style={{
-          backgroundImage:
-            "url('https://placehold.co/1600x900/003876/ffffff?text=Brain+Imaging+%26+AI')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundImage: `
+            radial-gradient(at 18% 25%, #1f6dbf 0%, transparent 55%),
+            radial-gradient(at 80% 30%, #003876 0%, transparent 60%),
+            radial-gradient(at 70% 80%, #0a4d8c 0%, transparent 55%),
+            radial-gradient(at 25% 90%, #001428 0%, transparent 60%)
+          `,
         }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_60%)]" />
+
+      {/* Layer 2: Horizontal scan lines — medical imaging slice feel */}
+      <div
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(transparent 50%, rgba(255,255,255,1) 50%)",
+          backgroundSize: "100% 3px",
+        }}
+      />
+
+      {/* Layer 3: Anatomical brain silhouette + neural network on the right */}
+      <svg
+        className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[55%] lg:w-[45%] max-w-[640px] opacity-50 pointer-events-none"
+        viewBox="0 0 600 600"
+        fill="none"
+        aria-hidden="true"
+      >
+        {/* Brain hemisphere silhouette (stylized, suggestive) */}
+        <path
+          d="M300 80 C200 80, 130 150, 130 250 C130 290, 145 320, 165 345 C150 370, 145 405, 165 435 C185 465, 220 480, 260 478 C275 510, 320 525, 365 510 C420 525, 470 500, 480 460 C515 445, 535 410, 525 370 C545 345, 555 305, 545 270 C555 230, 540 180, 500 145 C470 105, 410 80, 360 82 C340 80, 320 80, 300 80 Z"
+          stroke="rgba(120,180,240,0.45)"
+          strokeWidth="1.2"
+          fill="rgba(140,200,255,0.04)"
+        />
+        {/* Inner gyri/sulci suggestion lines */}
+        <path
+          d="M200 200 Q260 180, 300 220 T400 240"
+          stroke="rgba(120,180,240,0.3)"
+          strokeWidth="0.8"
+          fill="none"
+        />
+        <path
+          d="M180 320 Q240 300, 290 340 T420 350"
+          stroke="rgba(120,180,240,0.3)"
+          strokeWidth="0.8"
+          fill="none"
+        />
+        <path
+          d="M220 420 Q280 410, 330 440 T440 430"
+          stroke="rgba(120,180,240,0.3)"
+          strokeWidth="0.8"
+          fill="none"
+        />
+
+        {/* Neural network connection lines */}
+        <g stroke="rgba(255,255,255,0.35)" strokeWidth="1">
+          <line x1="220" y1="180" x2="320" y2="240" />
+          <line x1="320" y1="240" x2="430" y2="200" />
+          <line x1="320" y1="240" x2="380" y2="380" />
+          <line x1="220" y1="180" x2="200" y2="320" />
+          <line x1="200" y1="320" x2="380" y2="380" />
+          <line x1="380" y1="380" x2="430" y2="200" />
+          <line x1="380" y1="380" x2="290" y2="470" />
+          <line x1="200" y1="320" x2="290" y2="470" />
+          <line x1="430" y1="200" x2="480" y2="350" />
+          <line x1="480" y1="350" x2="380" y2="380" />
+          <line x1="480" y1="350" x2="290" y2="470" />
+        </g>
+
+        {/* Network nodes (neurons) */}
+        <g fill="white">
+          <circle cx="220" cy="180" r="5" opacity="0.9" />
+          <circle cx="320" cy="240" r="7" opacity="1" />
+          <circle cx="430" cy="200" r="5" opacity="0.85" />
+          <circle cx="200" cy="320" r="6" opacity="0.9" />
+          <circle cx="380" cy="380" r="8" opacity="1" />
+          <circle cx="480" cy="350" r="5" opacity="0.75" />
+          <circle cx="290" cy="470" r="6" opacity="0.85" />
+        </g>
+
+        {/* Active node halos (cyan glow) */}
+        <g fill="none" stroke="rgba(56,189,248,0.55)" strokeWidth="1">
+          <circle cx="320" cy="240" r="16" />
+          <circle cx="380" cy="380" r="18" />
+        </g>
+
+        {/* Crosshair / scan marker */}
+        <g stroke="rgba(56,189,248,0.5)" strokeWidth="0.8" fill="none">
+          <circle cx="380" cy="380" r="35" strokeDasharray="4 4" />
+        </g>
+      </svg>
+
+      {/* Layer 4: Floating glow orbs — adds 3D depth */}
+      <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-blue-400/15 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 left-1/4 w-[600px] h-[600px] rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-72 h-72 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-medium tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-xs font-medium tracking-wide uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
             Recruiting graduate students for 2026 Fall
           </div>
