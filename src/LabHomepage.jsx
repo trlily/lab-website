@@ -7,6 +7,7 @@ import React, { useState } from "react";
 const LAB_INFO = {
   name: "Brain Imaging & AI Lab",
   shortName: "BIAL",
+  logo: import.meta.env.BASE_URL + "logo.png",
   affiliation: "Yonsei University College of Medicine · Severance Hospital",
   address: "50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722, Republic of Korea",
   email: "bial@yuhs.ac",
@@ -164,6 +165,48 @@ const MEMBERS = [
   },
 ];
 
+/* 교수 (PI) 상세 정보 — 사진은 public/members/mijinyun.jpg 등으로 교체 가능 */
+const PROFESSOR = {
+  name: "윤미진",
+  nameEn: "Mijin Yun",
+  degrees: "M.D., Ph.D.",
+  title: "Professor",
+  affiliation: "연세대학교 의과대학 핵의학과",
+  affiliationEn: "Department of Nuclear Medicine, Yonsei University College of Medicine",
+  photo: "https://placehold.co/360x440/003876/ffffff?text=Photo",
+
+  metrics: {
+    papers: 228,
+    recentPapers: 54,
+  },
+
+  currentPositions: [
+    { period: "2026 –", title: "재정경제부 전략경제자문단 바이오 분과위원장" },
+    { period: "2024 –", title: "연세대학교 의과대학 도서관장" },
+  ],
+
+  pastPositions: [
+    { period: "2014 – 2018", title: "세브란스병원 핵의학과 과장 및 주임교수" },
+    { period: "역임", title: "세브란스 방사선안전관리의사" },
+    { period: "역임", title: "세브란스 융복합센터 부소장" },
+    { period: "역임", title: "대한핵의학회 학술/의무/간행이사" },
+    { period: "역임", title: "다기관 공동 연구 책임자" },
+  ],
+
+  certifications: [
+    "영상의학과 전문의",
+    "핵의학과 전문의",
+    "미국 의사 자격증",
+    "미국 핵의학과 전문의",
+  ],
+
+  editorialBoards: [
+    "Radiology",
+    "Clinical Nuclear Medicine",
+    "European Radiology",
+  ],
+};
+
 const NEWS = [
   {
     date: "2026-04-15",
@@ -187,10 +230,33 @@ const NEWS = [
   },
 ];
 
+/* 파트너 기관: 로고 파일을 public/partners/ 안에 넣고 logo 경로 수정 */
+const PARTNERS = [
+  {
+    name: "Yonsei University",
+    nameKr: "연세대학교",
+    logo: "https://placehold.co/240x120/ffffff/003876?text=Yonsei+University",
+    url: "https://www.yonsei.ac.kr",
+  },
+  {
+    name: "Yonsei Cancer Center",
+    nameKr: "연세대학교 암센터",
+    logo: "https://placehold.co/240x120/ffffff/003876?text=Yonsei+Cancer+Center",
+    url: "#",
+  },
+  {
+    name: "Severance Hospital",
+    nameKr: "세브란스병원",
+    logo: "https://placehold.co/240x120/ffffff/003876?text=Severance+Hospital",
+    url: "#",
+  },
+];
+
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
   { id: "research", label: "Research" },
   { id: "publications", label: "Publications" },
+  { id: "pi", label: "About PI" },
   { id: "members", label: "Members" },
   { id: "news", label: "News" },
 ];
@@ -205,9 +271,11 @@ function Header() {
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#003876] to-[#1f6dbf] flex items-center justify-center text-white font-bold">
-            B
-          </div>
+          <img
+            src={LAB_INFO.logo}
+            alt={LAB_INFO.name}
+            className="h-10 w-auto"
+          />
           <div className="leading-tight">
             <div className="text-base font-semibold text-slate-900">
               {LAB_INFO.name}
@@ -434,6 +502,107 @@ function Publications() {
   );
 }
 
+function Professor() {
+  const p = PROFESSOR;
+  return (
+    <section id="pi" className="py-24 bg-slate-50">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Principal Investigator"
+          title="About the PI"
+        />
+
+        {/* Top: photo + identity + metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-14">
+          <div className="md:col-span-1">
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 ring-1 ring-slate-200">
+              <img src={p.photo} alt={p.name} className="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div className="md:col-span-2 flex flex-col justify-center">
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+              {p.name}
+              <span className="block md:inline text-xl md:text-2xl font-medium text-slate-500 md:ml-3 mt-1 md:mt-0">
+                {p.nameEn}, {p.degrees}
+              </span>
+            </h3>
+            <p className="mt-3 text-lg text-[#003876] font-semibold">{p.title}</p>
+            <p className="mt-1 text-sm text-slate-700">{p.affiliation}</p>
+            <p className="text-sm text-slate-500">{p.affiliationEn}</p>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 max-w-md">
+              <div className="p-5 rounded-lg bg-white border border-slate-200">
+                <div className="text-3xl font-bold text-[#003876]">{p.metrics.papers}</div>
+                <div className="text-xs text-slate-600 mt-1">SCIE 논문</div>
+              </div>
+              <div className="p-5 rounded-lg bg-white border border-slate-200">
+                <div className="text-3xl font-bold text-[#003876]">{p.metrics.recentPapers}</div>
+                <div className="text-xs text-slate-600 mt-1">최근 3년</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom: detail sections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-[#003876] mb-5">
+              Current Positions · 현직
+            </h4>
+            <ul className="space-y-3 mb-10">
+              {p.currentPositions.map((pos) => (
+                <li key={pos.title} className="flex gap-4 text-sm">
+                  <span className="font-mono text-[#003876] font-semibold whitespace-nowrap shrink-0 w-24">
+                    {pos.period}
+                  </span>
+                  <span className="text-slate-800">{pos.title}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-5">
+              Past Positions · 역임
+            </h4>
+            <ul className="space-y-3">
+              {p.pastPositions.map((pos) => (
+                <li key={pos.title} className="flex gap-4 text-sm">
+                  <span className="font-mono text-slate-400 whitespace-nowrap shrink-0 w-24">
+                    {pos.period}
+                  </span>
+                  <span className="text-slate-700">{pos.title}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-[#003876] mb-5">
+              Board Certifications · 전문의 자격
+            </h4>
+            <ul className="space-y-2 text-sm text-slate-800 mb-10">
+              {p.certifications.map((c) => (
+                <li key={c} className="flex items-start gap-2">
+                  <span className="text-[#003876] mt-0.5">✓</span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-slate-500 mb-5">
+              Editorial Boards · 편집위원
+            </h4>
+            <ul className="space-y-2 text-sm text-slate-800">
+              {p.editorialBoards.map((b) => (
+                <li key={b} className="italic">— {b}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Members() {
   return (
     <section id="members" className="py-24 bg-white">
@@ -530,6 +699,36 @@ function News() {
   );
 }
 
+function Partners() {
+  return (
+    <section id="partners" className="py-16 bg-white border-t border-slate-100">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <h2 className="text-center text-xs font-semibold tracking-widest uppercase text-slate-500 mb-10">
+          Partners
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {PARTNERS.map((p) => (
+            <a
+              key={p.name}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center p-8 rounded-xl border border-slate-200 bg-white hover:border-[#003876] hover:shadow-md transition-all"
+              title={p.nameKr}
+            >
+              <img
+                src={p.logo}
+                alt={p.name}
+                className="max-h-16 w-auto opacity-70 group-hover:opacity-100 transition-opacity"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer id="contact" className="bg-[#001f44] text-blue-100">
@@ -537,8 +736,12 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-white text-[#003876] font-bold flex items-center justify-center">
-                B
+              <div className="w-12 h-12 rounded-lg bg-white p-1.5 flex items-center justify-center">
+                <img
+                  src={LAB_INFO.logo}
+                  alt={LAB_INFO.name}
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
               <div>
                 <div className="text-white font-semibold">{LAB_INFO.name}</div>
@@ -611,8 +814,10 @@ export default function LabHomepage() {
         <Hero />
         <Research />
         <Publications />
+        <Professor />
         <Members />
         <News />
+        <Partners />
       </main>
       <Footer />
     </div>
