@@ -129,14 +129,15 @@ const MEMBERS = [
     ],
   },
   {
-    group: "Research Professor",
+    group: "Research Assistant Professor",
     people: [
       {
         name: "이상원",
         nameEn: "Sangwon Lee",
-        role: "Research Professor",
+        role: "Research Assistant Professor",
         photo: "https://placehold.co/240x240/0a4d8c/ffffff?text=Photo",
         email: "",
+        url: "https://medicine.yonsei.ac.kr/medicine/profile-view.do?empNo=eXVoczIwMjBAKUApNMQSi1oWFfhmVaDPDRNLN795J3uI64y4oHOVU1inClE%3D",
       },
     ],
   },
@@ -144,7 +145,7 @@ const MEMBERS = [
     group: "Student Researchers",
     people: [
       { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac" },
+      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9" },
       { name: "강희지", nameEn: "Heeji Kang", role: "MS", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
       { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
       { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
@@ -173,7 +174,8 @@ const PROFESSOR = {
   title: "Professor",
   affiliation: "연세대학교 의과대학 핵의학과",
   affiliationEn: "Department of Nuclear Medicine, Yonsei University College of Medicine",
-  photo: "https://placehold.co/360x440/003876/ffffff?text=Photo",
+  photo: import.meta.env.BASE_URL + "members/mijinyun.png",
+  url: "https://medicine.yonsei.ac.kr/medicine/profile-view.do?empNo=eXVoczIwMjBAKUApNMUCjHYvFcRyVa7BDBBLN1WeUDYfW8lJAyhq7OmNQsE%3D",
 
   metrics: {
     papers: 228,
@@ -230,8 +232,14 @@ const NEWS = [
   },
 ];
 
-/* 파트너 기관: 로고 클릭 시 외부 사이트로 이동 */
+/* 파트너 기관: 로고 클릭 시 외부 사이트로 이동 (연세대학교를 가운데 배치) */
 const PARTNERS = [
+  {
+    name: "Severance Hospital",
+    nameKr: "세브란스병원",
+    logo: import.meta.env.BASE_URL + "partners/yonsei_sev.jpg",
+    url: "https://sev.severance.healthcare/sev/index.do",
+  },
   {
     name: "Yonsei University",
     nameKr: "연세대학교",
@@ -242,13 +250,7 @@ const PARTNERS = [
     name: "Yonsei Cancer Center",
     nameKr: "연세대학교 암센터",
     logo: import.meta.env.BASE_URL + "partners/yonsei_cancer.png",
-    url: "#",
-  },
-  {
-    name: "Severance Hospital",
-    nameKr: "세브란스병원",
-    logo: import.meta.env.BASE_URL + "partners/yonsei_sev.jpg",
-    url: "#",
+    url: "https://cancer.severance.healthcare/",
   },
 ];
 
@@ -530,6 +532,17 @@ function Professor() {
             <p className="mt-1 text-sm text-slate-700">{p.affiliation}</p>
             <p className="text-sm text-slate-500">{p.affiliationEn}</p>
 
+            {p.url && (
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#003876] text-white text-sm font-semibold hover:bg-[#0a4d8c] transition-colors w-fit"
+              >
+                View Faculty Profile ↗
+              </a>
+            )}
+
             <div className="mt-8 grid grid-cols-2 gap-4 max-w-md">
               <div className="p-5 rounded-lg bg-white border border-slate-200">
                 <div className="text-3xl font-bold text-[#003876]">{p.metrics.papers}</div>
@@ -636,7 +649,18 @@ function Members() {
                     </div>
                     <div className="mt-4">
                       <div className="font-semibold text-slate-900 text-sm leading-tight">
-                        {m.name}
+                        {m.url ? (
+                          <a
+                            href={m.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[#003876] transition-colors"
+                          >
+                            {m.name} ↗
+                          </a>
+                        ) : (
+                          m.name
+                        )}
                       </div>
                       {m.nameEn && (
                         <div className="text-[11px] text-slate-500 mt-0.5 leading-snug">
@@ -704,20 +728,20 @@ function Footer() {
     <footer id="contact" className="bg-[#001f44] text-blue-100">
       {/* Partner logo strip */}
       <div className="bg-white border-b border-slate-100">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-8 flex flex-wrap items-center justify-center gap-10 sm:gap-16">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-12 flex flex-wrap items-center justify-center gap-12 sm:gap-20">
           {PARTNERS.map((p) => (
             <a
               key={p.name}
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-70 hover:opacity-100 transition-opacity"
+              className="opacity-80 hover:opacity-100 transition-opacity"
               title={p.nameKr}
             >
               <img
                 src={p.logo}
                 alt={p.name}
-                className="h-12 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </a>
           ))}
