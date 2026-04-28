@@ -125,7 +125,7 @@ const MEMBERS = [
       { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
       { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9" },
       { name: "강희지", nameEn: "Heeji Kang", role: "MS", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/sangmin.png", email: "" },
       { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
     ],
   },
