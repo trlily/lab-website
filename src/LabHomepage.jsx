@@ -5,15 +5,14 @@ import React, { useState } from "react";
  * ============================================================ */
 
 const LAB_INFO = {
-  name: "Brain Imaging & AI Lab",
-  shortName: "BIAL",
+  name: "MIND",
+  shortName: "MIND",
+  nameFull: "Molecular Imaging in Neoplasia & Neurodegeneration Discovery Laboratory",
   logo: import.meta.env.BASE_URL + "logo.png",
   affiliation: "Yonsei University College of Medicine · Severance Hospital",
   address: "50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722, Republic of Korea",
   email: "gayeonkim@yuhs.ac",
   phone: "+82 10-7632-5920",
-  vision:
-    "Advancing precision medicine through translational neuroimaging and artificial intelligence.",
   subVision:
     "We develop next-generation imaging biomarkers and deep learning models to better understand the human brain — from molecular pathology to clinical decision-making.",
 };
@@ -122,8 +121,8 @@ const MEMBERS = [
   {
     group: "Student Researchers",
     people: [
-      { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9" },
+      { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD Student", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD Student", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9" },
       { name: "강희지", nameEn: "Heeji Kang", role: "MS", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
       { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/sangmin.png", email: "" },
       { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
@@ -316,11 +315,44 @@ function Header() {
 }
 
 function Hero() {
+  const acronym = [
+    ["M", "olecular"],
+    ["I", "maging"],
+    ["N", "eoplasia & Neurodegeneration"],
+    ["D", "iscovery Laboratory"],
+  ];
   return (
     <section
       id="home"
       className="relative overflow-hidden bg-[#001428] text-white"
     >
+      {/* CSS keyframes for living motion */}
+      <style>{`
+        @keyframes mindNodeSm { 0%,100%{r:5;opacity:.85} 50%{r:7;opacity:1} }
+        @keyframes mindNodeMd { 0%,100%{r:6;opacity:.9} 50%{r:9;opacity:1} }
+        @keyframes mindNodeLg { 0%,100%{r:7;opacity:1} 50%{r:11;opacity:1} }
+        @keyframes mindFlow { to { stroke-dashoffset: -40 } }
+        @keyframes mindBreathe { 0%,100%{opacity:.35} 50%{opacity:.55} }
+        @keyframes mindHalo { 0%,100%{r:16;opacity:.6} 50%{r:24;opacity:.15} }
+        @keyframes mindHaloLg { 0%,100%{r:18;opacity:.55} 50%{r:28;opacity:.1} }
+        @keyframes mindOrbit { to { transform: rotate(360deg) } }
+        @keyframes mindFadeIn { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: translateY(0) } }
+        .mind-n1 { animation: mindNodeSm 3.2s ease-in-out infinite; transform-box: fill-box; }
+        .mind-n2 { animation: mindNodeLg 2.8s ease-in-out infinite; transform-box: fill-box; }
+        .mind-n3 { animation: mindNodeSm 3.6s ease-in-out infinite; transform-box: fill-box; }
+        .mind-n4 { animation: mindNodeMd 3.0s ease-in-out infinite; transform-box: fill-box; }
+        .mind-n5 { animation: mindNodeLg 2.6s ease-in-out infinite; transform-box: fill-box; }
+        .mind-n6 { animation: mindNodeSm 3.4s ease-in-out infinite; transform-box: fill-box; }
+        .mind-n7 { animation: mindNodeMd 3.1s ease-in-out infinite; transform-box: fill-box; }
+        .mind-line { stroke-dasharray: 6 4; animation: mindFlow 4s linear infinite; }
+        .mind-line-slow { stroke-dasharray: 6 4; animation: mindFlow 7s linear infinite; }
+        .mind-crosshair { transform-origin: 380px 380px; transform-box: fill-box; animation: mindOrbit 25s linear infinite; }
+        .mind-brain { animation: mindBreathe 6s ease-in-out infinite; }
+        .mind-halo { transform-box: fill-box; animation: mindHalo 2.6s ease-in-out infinite; }
+        .mind-halo-lg { transform-box: fill-box; animation: mindHaloLg 3.2s ease-in-out infinite; }
+        .mind-acronym-row { animation: mindFadeIn 0.6s ease-out backwards; }
+      `}</style>
+
       {/* Layer 1: Mesh radial gradient — adds organic, dimensional depth */}
       <div
         className="absolute inset-0"
@@ -351,68 +383,53 @@ function Hero() {
         fill="none"
         aria-hidden="true"
       >
-        {/* Brain hemisphere silhouette (stylized, suggestive) */}
+        {/* Brain hemisphere silhouette (animated breathing) */}
         <path
+          className="mind-brain"
           d="M300 80 C200 80, 130 150, 130 250 C130 290, 145 320, 165 345 C150 370, 145 405, 165 435 C185 465, 220 480, 260 478 C275 510, 320 525, 365 510 C420 525, 470 500, 480 460 C515 445, 535 410, 525 370 C545 345, 555 305, 545 270 C555 230, 540 180, 500 145 C470 105, 410 80, 360 82 C340 80, 320 80, 300 80 Z"
           stroke="rgba(120,180,240,0.45)"
           strokeWidth="1.2"
           fill="rgba(140,200,255,0.04)"
         />
-        {/* Inner gyri/sulci suggestion lines */}
-        <path
-          d="M200 200 Q260 180, 300 220 T400 240"
-          stroke="rgba(120,180,240,0.3)"
-          strokeWidth="0.8"
-          fill="none"
-        />
-        <path
-          d="M180 320 Q240 300, 290 340 T420 350"
-          stroke="rgba(120,180,240,0.3)"
-          strokeWidth="0.8"
-          fill="none"
-        />
-        <path
-          d="M220 420 Q280 410, 330 440 T440 430"
-          stroke="rgba(120,180,240,0.3)"
-          strokeWidth="0.8"
-          fill="none"
-        />
+        <path d="M200 200 Q260 180, 300 220 T400 240" stroke="rgba(120,180,240,0.3)" strokeWidth="0.8" fill="none" />
+        <path d="M180 320 Q240 300, 290 340 T420 350" stroke="rgba(120,180,240,0.3)" strokeWidth="0.8" fill="none" />
+        <path d="M220 420 Q280 410, 330 440 T440 430" stroke="rgba(120,180,240,0.3)" strokeWidth="0.8" fill="none" />
 
-        {/* Neural network connection lines */}
-        <g stroke="rgba(255,255,255,0.35)" strokeWidth="1">
-          <line x1="220" y1="180" x2="320" y2="240" />
-          <line x1="320" y1="240" x2="430" y2="200" />
-          <line x1="320" y1="240" x2="380" y2="380" />
-          <line x1="220" y1="180" x2="200" y2="320" />
-          <line x1="200" y1="320" x2="380" y2="380" />
-          <line x1="380" y1="380" x2="430" y2="200" />
-          <line x1="380" y1="380" x2="290" y2="470" />
-          <line x1="200" y1="320" x2="290" y2="470" />
-          <line x1="430" y1="200" x2="480" y2="350" />
-          <line x1="480" y1="350" x2="380" y2="380" />
-          <line x1="480" y1="350" x2="290" y2="470" />
+        {/* Animated flowing connection lines (data flow) */}
+        <g stroke="rgba(255,255,255,0.4)" strokeWidth="1">
+          <line className="mind-line" x1="220" y1="180" x2="320" y2="240" />
+          <line className="mind-line-slow" x1="320" y1="240" x2="430" y2="200" />
+          <line className="mind-line" x1="320" y1="240" x2="380" y2="380" />
+          <line className="mind-line-slow" x1="220" y1="180" x2="200" y2="320" />
+          <line className="mind-line" x1="200" y1="320" x2="380" y2="380" />
+          <line className="mind-line-slow" x1="380" y1="380" x2="430" y2="200" />
+          <line className="mind-line" x1="380" y1="380" x2="290" y2="470" />
+          <line className="mind-line-slow" x1="200" y1="320" x2="290" y2="470" />
+          <line className="mind-line" x1="430" y1="200" x2="480" y2="350" />
+          <line className="mind-line-slow" x1="480" y1="350" x2="380" y2="380" />
+          <line className="mind-line" x1="480" y1="350" x2="290" y2="470" />
         </g>
 
-        {/* Network nodes (neurons) */}
+        {/* Pulsing network nodes (neurons firing) */}
         <g fill="white">
-          <circle cx="220" cy="180" r="5" opacity="0.9" />
-          <circle cx="320" cy="240" r="7" opacity="1" />
-          <circle cx="430" cy="200" r="5" opacity="0.85" />
-          <circle cx="200" cy="320" r="6" opacity="0.9" />
-          <circle cx="380" cy="380" r="8" opacity="1" />
-          <circle cx="480" cy="350" r="5" opacity="0.75" />
-          <circle cx="290" cy="470" r="6" opacity="0.85" />
+          <circle className="mind-n1" cx="220" cy="180" r="5" />
+          <circle className="mind-n2" cx="320" cy="240" r="7" />
+          <circle className="mind-n3" cx="430" cy="200" r="5" />
+          <circle className="mind-n4" cx="200" cy="320" r="6" />
+          <circle className="mind-n5" cx="380" cy="380" r="8" />
+          <circle className="mind-n6" cx="480" cy="350" r="5" />
+          <circle className="mind-n7" cx="290" cy="470" r="6" />
         </g>
 
-        {/* Active node halos (cyan glow) */}
+        {/* Pulsing halos around active nodes */}
         <g fill="none" stroke="rgba(56,189,248,0.55)" strokeWidth="1">
-          <circle cx="320" cy="240" r="16" />
-          <circle cx="380" cy="380" r="18" />
+          <circle className="mind-halo" cx="320" cy="240" r="16" />
+          <circle className="mind-halo-lg" cx="380" cy="380" r="18" />
         </g>
 
-        {/* Crosshair / scan marker */}
+        {/* Rotating crosshair scan marker */}
         <g stroke="rgba(56,189,248,0.5)" strokeWidth="0.8" fill="none">
-          <circle cx="380" cy="380" r="35" strokeDasharray="4 4" />
+          <circle className="mind-crosshair" cx="380" cy="380" r="35" strokeDasharray="4 4" />
         </g>
       </svg>
 
@@ -423,17 +440,36 @@ function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-xs font-medium tracking-wide uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
-            Recruiting graduate students for 2026 Fall
-          </div>
-          <h1 className="mt-6 text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">
-            {LAB_INFO.vision}
+          {/* MIND — large brand mark */}
+          <h1 className="text-7xl md:text-[10rem] font-black tracking-tight leading-none">
+            <span className="inline-block">M</span>
+            <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
+            <span className="inline-block">I</span>
+            <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
+            <span className="inline-block">N</span>
+            <span className="inline-block text-blue-300/70 mx-1 md:mx-2">·</span>
+            <span className="inline-block">D</span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed">
-            {LAB_INFO.subVision}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+
+          {/* Acronym reveal */}
+          <ul className="mt-10 space-y-2">
+            {acronym.map(([letter, rest], i) => (
+              <li
+                key={letter}
+                className="mind-acronym-row flex items-baseline gap-4"
+                style={{ animationDelay: `${0.15 + i * 0.12}s` }}
+              >
+                <span className="text-2xl md:text-3xl font-bold text-white w-7 md:w-9 text-center">
+                  {letter}
+                </span>
+                <span className="text-base md:text-lg text-blue-100 leading-snug">
+                  {rest}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-12 flex flex-wrap gap-4">
             <a
               href="#research"
               className="px-6 py-3 rounded-md bg-white text-[#003876] font-semibold hover:bg-blue-50 transition-colors"
