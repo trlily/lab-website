@@ -133,9 +133,9 @@ const MEMBERS = [
     group: "Researchers",
     people: [
       { name: "연구원 김", nameEn: "Researcher Kim", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "연구원 홍", nameEn: "Researcher Hong", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "이명오", nameEn: "Myeongoh Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "이승준", nameEn: "Seungjun Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "연구원 홍", nameEn: "Researcher Hong", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "이민지", nameEn: "Minji Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "강성진", nameEn: "Sungjin Kang", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
