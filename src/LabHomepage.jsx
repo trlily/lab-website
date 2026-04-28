@@ -11,8 +11,6 @@ const LAB_INFO = {
   logo: import.meta.env.BASE_URL + "logo.png",
   affiliation: "Yonsei University College of Medicine · Severance Hospital",
   address: "50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722, Republic of Korea",
-  email: "gayeonkim@yuhs.ac",
-  phone: "+82 10-7632-5920",
   subVision:
     "We develop next-generation imaging biomarkers and deep learning models to better understand the human brain — from molecular pathology to clinical decision-making.",
 };
