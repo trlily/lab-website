@@ -854,7 +854,16 @@ function Footer() {
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-blue-300">
           <div>© {new Date().getFullYear()} {LAB_INFO.name}. All rights reserved.</div>
           <div>
-            Designed with care · Built with React + Tailwind CSS
+            Designed & built by{" "}
+            <a
+              href="https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-medium hover:underline"
+            >
+              Gayeon Kim
+            </a>{" "}
+            · © 2026
           </div>
         </div>
       </div>
