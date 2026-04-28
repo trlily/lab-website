@@ -334,6 +334,8 @@ function Hero() {
         @keyframes mindWave { 0%{r:200;opacity:0.4} 100%{r:380;opacity:0} }
         @keyframes mindParticle { 0%{transform:translateY(0);opacity:.3} 50%{opacity:.7} 100%{transform:translateY(-20px);opacity:0} }
         @keyframes mindFadeIn { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: translateY(0) } }
+        @keyframes mindFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+        .mind-float { animation: mindFloat 6s ease-in-out infinite; }
         .mind-node-a { animation: mindNode 3.2s ease-in-out infinite; transform-box: fill-box; }
         .mind-node-b { animation: mindNode 2.6s ease-in-out infinite; transform-box: fill-box; animation-delay: -0.5s; }
         .mind-node-c { animation: mindNode 3.6s ease-in-out infinite; transform-box: fill-box; animation-delay: -1.2s; }
@@ -379,6 +381,21 @@ function Hero() {
           backgroundSize: "100% 3px",
         }}
       />
+
+      {/* Layer 3: Hero video — MIND brand animation, plays once and floats */}
+      <div className="absolute right-0 lg:right-12 top-1/2 -translate-y-1/2 w-[65%] sm:w-[55%] lg:w-[50%] max-w-[700px] pointer-events-none">
+        <div className="mind-float">
+          <video
+            src={import.meta.env.BASE_URL + "hero.mp4"}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-auto"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
 
       {/* Layer 4: Floating glow orbs — adds 3D depth */}
       <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-blue-400/15 blur-3xl pointer-events-none" />
