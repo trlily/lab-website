@@ -114,6 +114,7 @@ const MEMBERS = [
         photo: import.meta.env.BASE_URL + "members/sangwon.png",
         email: "",
         url: "https://medicine.yonsei.ac.kr/medicine/profile-view.do?empNo=eXVoczIwMjBAKUApNMQSi1oWFfhmVaDPDRNLN795J3uI64y4oHOVU1inClE%3D",
+        photoPos: "center",
       },
     ],
   },
@@ -121,10 +122,10 @@ const MEMBERS = [
     group: "Student Researchers",
     people: [
       { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD Student", photo: import.meta.env.BASE_URL + "members/daesung.png", email: "" },
-      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD Student", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9" },
+      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD Student", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac", url: "https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9", photoPos: "center" },
       { name: "강희지", nameEn: "Heeji Kang", role: "MS Student", photo: import.meta.env.BASE_URL + "members/heeji.png", email: "" },
       { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate Student", photo: import.meta.env.BASE_URL + "members/sangmin.png", email: "" },
-      { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate Student", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
+      { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate Student", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "", photoPos: "center" },
     ],
   },
   {
@@ -132,7 +133,7 @@ const MEMBERS = [
     people: [
       { name: "이명오", nameEn: "Myeongoh Lee", role: "Researcher", photo: import.meta.env.BASE_URL + "members/myeongoh.png", email: "" },
       { name: "이승준", nameEn: "Seungjun Lee", role: "Researcher", photo: import.meta.env.BASE_URL + "members/seungjun.png", email: "" },
-      { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/nakyung.png", email: "" },
+      { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/nakyung.png", email: "", photoPos: "center" },
       { name: "강성진", nameEn: "Sungjin Kang", role: "Researcher", photo: import.meta.env.BASE_URL + "members/sungjin.png", email: "" },
       { name: "임현경", nameEn: "Hyunkyung Lim", role: "Researcher", photo: import.meta.env.BASE_URL + "members/hyunkyung.png", email: "" },
     ],
@@ -322,30 +323,38 @@ function Hero() {
       id="home"
       className="relative overflow-hidden bg-[#001428] text-white"
     >
-      {/* CSS keyframes for living motion */}
+      {/* CSS keyframes for sophisticated motion */}
       <style>{`
-        @keyframes mindNodeSm { 0%,100%{r:5;opacity:.85} 50%{r:7;opacity:1} }
-        @keyframes mindNodeMd { 0%,100%{r:6;opacity:.9} 50%{r:9;opacity:1} }
-        @keyframes mindNodeLg { 0%,100%{r:7;opacity:1} 50%{r:11;opacity:1} }
-        @keyframes mindFlow { to { stroke-dashoffset: -40 } }
-        @keyframes mindBreathe { 0%,100%{opacity:.35} 50%{opacity:.55} }
-        @keyframes mindHalo { 0%,100%{r:16;opacity:.6} 50%{r:24;opacity:.15} }
-        @keyframes mindHaloLg { 0%,100%{r:18;opacity:.55} 50%{r:28;opacity:.1} }
+        @keyframes mindNode { 0%,100%{r:4;opacity:.85} 50%{r:6.5;opacity:1} }
+        @keyframes mindNodeLg { 0%,100%{r:6;opacity:1} 50%{r:10;opacity:1} }
+        @keyframes mindFlow { to { stroke-dashoffset: -60 } }
+        @keyframes mindBreathe { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:.65;transform:scale(1.01)} }
         @keyframes mindOrbit { to { transform: rotate(360deg) } }
+        @keyframes mindOrbitRev { to { transform: rotate(-360deg) } }
+        @keyframes mindWave1 { 0%,100%{r:200;opacity:0.25} 100%{r:340;opacity:0} }
+        @keyframes mindWave { 0%{r:200;opacity:0.4} 100%{r:380;opacity:0} }
+        @keyframes mindParticle { 0%{transform:translateY(0);opacity:.3} 50%{opacity:.7} 100%{transform:translateY(-20px);opacity:0} }
         @keyframes mindFadeIn { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: translateY(0) } }
-        .mind-n1 { animation: mindNodeSm 3.2s ease-in-out infinite; transform-box: fill-box; }
-        .mind-n2 { animation: mindNodeLg 2.8s ease-in-out infinite; transform-box: fill-box; }
-        .mind-n3 { animation: mindNodeSm 3.6s ease-in-out infinite; transform-box: fill-box; }
-        .mind-n4 { animation: mindNodeMd 3.0s ease-in-out infinite; transform-box: fill-box; }
-        .mind-n5 { animation: mindNodeLg 2.6s ease-in-out infinite; transform-box: fill-box; }
-        .mind-n6 { animation: mindNodeSm 3.4s ease-in-out infinite; transform-box: fill-box; }
-        .mind-n7 { animation: mindNodeMd 3.1s ease-in-out infinite; transform-box: fill-box; }
-        .mind-line { stroke-dasharray: 6 4; animation: mindFlow 4s linear infinite; }
-        .mind-line-slow { stroke-dasharray: 6 4; animation: mindFlow 7s linear infinite; }
-        .mind-crosshair { transform-origin: 380px 380px; transform-box: fill-box; animation: mindOrbit 25s linear infinite; }
-        .mind-brain { animation: mindBreathe 6s ease-in-out infinite; }
-        .mind-halo { transform-box: fill-box; animation: mindHalo 2.6s ease-in-out infinite; }
-        .mind-halo-lg { transform-box: fill-box; animation: mindHaloLg 3.2s ease-in-out infinite; }
+        .mind-node-a { animation: mindNode 3.2s ease-in-out infinite; transform-box: fill-box; }
+        .mind-node-b { animation: mindNode 2.6s ease-in-out infinite; transform-box: fill-box; animation-delay: -0.5s; }
+        .mind-node-c { animation: mindNode 3.6s ease-in-out infinite; transform-box: fill-box; animation-delay: -1.2s; }
+        .mind-node-d { animation: mindNode 2.9s ease-in-out infinite; transform-box: fill-box; animation-delay: -0.3s; }
+        .mind-node-lg { animation: mindNodeLg 2.8s ease-in-out infinite; transform-box: fill-box; }
+        .mind-node-lg-2 { animation: mindNodeLg 3.4s ease-in-out infinite; transform-box: fill-box; animation-delay: -1s; }
+        .mind-line { stroke-dasharray: 4 6; animation: mindFlow 5s linear infinite; }
+        .mind-line-fast { stroke-dasharray: 4 6; animation: mindFlow 3s linear infinite; }
+        .mind-line-slow { stroke-dasharray: 4 6; animation: mindFlow 8s linear infinite; }
+        .mind-ring { transform-origin: 400px 400px; transform-box: fill-box; animation: mindOrbit 80s linear infinite; }
+        .mind-ring-rev { transform-origin: 400px 400px; transform-box: fill-box; animation: mindOrbitRev 60s linear infinite; }
+        .mind-crosshair { transform-origin: 400px 400px; transform-box: fill-box; animation: mindOrbit 30s linear infinite; }
+        .mind-brain { animation: mindBreathe 6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+        .mind-wave { transform-origin: 400px 400px; transform-box: fill-box; animation: mindWave 4s ease-out infinite; }
+        .mind-wave-2 { transform-origin: 400px 400px; transform-box: fill-box; animation: mindWave 4s ease-out infinite; animation-delay: 1.3s; }
+        .mind-wave-3 { transform-origin: 400px 400px; transform-box: fill-box; animation: mindWave 4s ease-out infinite; animation-delay: 2.6s; }
+        .mind-particle-a { animation: mindParticle 4s ease-out infinite; }
+        .mind-particle-b { animation: mindParticle 5s ease-out infinite; animation-delay: -1.5s; }
+        .mind-particle-c { animation: mindParticle 6s ease-out infinite; animation-delay: -3s; }
+        .mind-particle-d { animation: mindParticle 4.5s ease-out infinite; animation-delay: -2.2s; }
         .mind-acronym-row { animation: mindFadeIn 0.6s ease-out backwards; }
       `}</style>
 
@@ -372,60 +381,160 @@ function Hero() {
         }}
       />
 
-      {/* Layer 3: Anatomical brain silhouette + neural network on the right */}
+      {/* Layer 3: Sophisticated brain anatomy + neural network */}
       <svg
-        className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[55%] lg:w-[45%] max-w-[640px] opacity-50 pointer-events-none"
-        viewBox="0 0 600 600"
+        className="absolute right-0 lg:right-8 top-1/2 -translate-y-1/2 w-[70%] sm:w-[60%] lg:w-[55%] max-w-[760px] opacity-90 pointer-events-none"
+        viewBox="0 0 800 800"
         fill="none"
         aria-hidden="true"
       >
-        {/* Brain hemisphere silhouette (animated breathing) */}
-        <path
-          className="mind-brain"
-          d="M300 80 C200 80, 130 150, 130 250 C130 290, 145 320, 165 345 C150 370, 145 405, 165 435 C185 465, 220 480, 260 478 C275 510, 320 525, 365 510 C420 525, 470 500, 480 460 C515 445, 535 410, 525 370 C545 345, 555 305, 545 270 C555 230, 540 180, 500 145 C470 105, 410 80, 360 82 C340 80, 320 80, 300 80 Z"
-          stroke="rgba(120,180,240,0.45)"
-          strokeWidth="1.2"
-          fill="rgba(140,200,255,0.04)"
-        />
-        <path d="M200 200 Q260 180, 300 220 T400 240" stroke="rgba(120,180,240,0.3)" strokeWidth="0.8" fill="none" />
-        <path d="M180 320 Q240 300, 290 340 T420 350" stroke="rgba(120,180,240,0.3)" strokeWidth="0.8" fill="none" />
-        <path d="M220 420 Q280 410, 330 440 T440 430" stroke="rgba(120,180,240,0.3)" strokeWidth="0.8" fill="none" />
+        <defs>
+          {/* Gradients */}
+          <radialGradient id="brainGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#56b8ff" stopOpacity="0.35" />
+            <stop offset="55%" stopColor="#1f6dbf" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#001428" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id="brainFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#7ec8ff" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#003876" stopOpacity="0.04" />
+          </linearGradient>
+          <linearGradient id="lineFlow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#56b8ff" stopOpacity="0" />
+            <stop offset="50%" stopColor="#7ec8ff" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#56b8ff" stopOpacity="0" />
+          </linearGradient>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+            <stop offset="40%" stopColor="#7ec8ff" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#1f6dbf" stopOpacity="0" />
+          </radialGradient>
+          {/* Soft glow filter */}
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="bigGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="6" />
+          </filter>
+        </defs>
 
-        {/* Animated flowing connection lines (data flow) */}
-        <g stroke="rgba(255,255,255,0.4)" strokeWidth="1">
-          <line className="mind-line" x1="220" y1="180" x2="320" y2="240" />
-          <line className="mind-line-slow" x1="320" y1="240" x2="430" y2="200" />
-          <line className="mind-line" x1="320" y1="240" x2="380" y2="380" />
-          <line className="mind-line-slow" x1="220" y1="180" x2="200" y2="320" />
-          <line className="mind-line" x1="200" y1="320" x2="380" y2="380" />
-          <line className="mind-line-slow" x1="380" y1="380" x2="430" y2="200" />
-          <line className="mind-line" x1="380" y1="380" x2="290" y2="470" />
-          <line className="mind-line-slow" x1="200" y1="320" x2="290" y2="470" />
-          <line className="mind-line" x1="430" y1="200" x2="480" y2="350" />
-          <line className="mind-line-slow" x1="480" y1="350" x2="380" y2="380" />
-          <line className="mind-line" x1="480" y1="350" x2="290" y2="470" />
+        {/* Background atmospheric glow */}
+        <circle cx="400" cy="400" r="320" fill="url(#brainGlow)" />
+
+        {/* Outer rotating scan rings (orbital ticks) */}
+        <g className="mind-ring" stroke="rgba(126,200,255,0.18)" strokeWidth="0.8" fill="none">
+          <circle cx="400" cy="400" r="380" strokeDasharray="2 8" />
+        </g>
+        <g className="mind-ring-rev" stroke="rgba(126,200,255,0.22)" strokeWidth="0.6" fill="none">
+          <circle cx="400" cy="400" r="345" strokeDasharray="1 5" />
+        </g>
+        <g stroke="rgba(126,200,255,0.12)" strokeWidth="0.5" fill="none">
+          <circle cx="400" cy="400" r="305" strokeDasharray="0.5 3" />
         </g>
 
-        {/* Pulsing network nodes (neurons firing) */}
-        <g fill="white">
-          <circle className="mind-n1" cx="220" cy="180" r="5" />
-          <circle className="mind-n2" cx="320" cy="240" r="7" />
-          <circle className="mind-n3" cx="430" cy="200" r="5" />
-          <circle className="mind-n4" cx="200" cy="320" r="6" />
-          <circle className="mind-n5" cx="380" cy="380" r="8" />
-          <circle className="mind-n6" cx="480" cy="350" r="5" />
-          <circle className="mind-n7" cx="290" cy="470" r="6" />
+        {/* Tick marks around outer ring (scanner aesthetic) */}
+        <g stroke="rgba(126,200,255,0.5)" strokeWidth="1.5">
+          {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            const x1 = 400 + Math.cos(rad) * 380;
+            const y1 = 400 + Math.sin(rad) * 380;
+            const x2 = 400 + Math.cos(rad) * 395;
+            const y2 = 400 + Math.sin(rad) * 395;
+            return <line key={deg} x1={x1} y1={y1} x2={x2} y2={y2} />;
+          })}
         </g>
 
-        {/* Pulsing halos around active nodes */}
-        <g fill="none" stroke="rgba(56,189,248,0.55)" strokeWidth="1">
-          <circle className="mind-halo" cx="320" cy="240" r="16" />
-          <circle className="mind-halo-lg" cx="380" cy="380" r="18" />
+        {/* Pulsing scan waves emanating from center */}
+        <circle className="mind-wave" cx="400" cy="400" r="200" stroke="rgba(126,200,255,0.5)" strokeWidth="1.5" fill="none" />
+        <circle className="mind-wave-2" cx="400" cy="400" r="200" stroke="rgba(126,200,255,0.4)" strokeWidth="1.2" fill="none" />
+        <circle className="mind-wave-3" cx="400" cy="400" r="200" stroke="rgba(126,200,255,0.3)" strokeWidth="1" fill="none" />
+
+        {/* Brain anatomy with detail */}
+        <g className="mind-brain">
+          {/* Hemisphere outline with gradient fill */}
+          <path
+            d="M400 200 C310 200, 230 250, 215 320 Q190 370, 215 425 Q190 480, 220 530 Q245 580, 295 595 Q335 610, 385 600 Q415 615, 445 600 Q495 615, 540 595 Q585 580, 605 530 Q635 475, 605 425 Q635 365, 595 320 Q615 260, 555 220 Q505 200, 455 202 C435 200, 415 200, 400 200 Z"
+            stroke="rgba(180,220,255,0.7)"
+            strokeWidth="1.5"
+            fill="url(#brainFill)"
+            filter="url(#softGlow)"
+          />
+          {/* Gyri/sulci lines — anatomical detail */}
+          <g stroke="rgba(180,220,255,0.4)" strokeWidth="0.9" fill="none">
+            <path d="M260 290 Q310 270 350 310 T440 330" />
+            <path d="M250 350 Q310 330 360 370 T470 385" />
+            <path d="M245 410 Q310 390 360 430 T485 445" />
+            <path d="M255 470 Q315 450 365 490 T475 500" />
+            <path d="M280 530 Q335 510 385 540 T475 545" />
+          </g>
+          {/* Central fissure */}
+          <path d="M405 215 L405 595" stroke="rgba(180,220,255,0.4)" strokeWidth="0.8" />
+          {/* Brainstem */}
+          <path d="M385 600 Q400 640 415 600" stroke="rgba(180,220,255,0.5)" strokeWidth="1" fill="rgba(126,200,255,0.06)" />
         </g>
 
-        {/* Rotating crosshair scan marker */}
-        <g stroke="rgba(56,189,248,0.5)" strokeWidth="0.8" fill="none">
-          <circle className="mind-crosshair" cx="380" cy="380" r="35" strokeDasharray="4 4" />
+        {/* Dense neural network overlay */}
+        <g strokeWidth="1.2">
+          <g stroke="rgba(126,200,255,0.55)">
+            <line className="mind-line" x1="280" y1="280" x2="365" y2="350" />
+            <line className="mind-line-slow" x1="365" y1="350" x2="450" y2="290" />
+            <line className="mind-line-fast" x1="450" y1="290" x2="540" y2="360" />
+            <line className="mind-line" x1="365" y1="350" x2="430" y2="450" />
+            <line className="mind-line-slow" x1="540" y1="360" x2="430" y2="450" />
+            <line className="mind-line" x1="280" y1="280" x2="310" y2="430" />
+            <line className="mind-line-fast" x1="310" y1="430" x2="430" y2="450" />
+            <line className="mind-line-slow" x1="430" y1="450" x2="495" y2="530" />
+            <line className="mind-line" x1="310" y1="430" x2="370" y2="540" />
+            <line className="mind-line-fast" x1="370" y1="540" x2="495" y2="530" />
+            <line className="mind-line-slow" x1="495" y1="530" x2="555" y2="450" />
+            <line className="mind-line" x1="555" y1="450" x2="540" y2="360" />
+            <line className="mind-line-fast" x1="555" y1="450" x2="430" y2="450" />
+          </g>
+        </g>
+
+        {/* Pulsing network nodes — three sizes for visual hierarchy */}
+        <g>
+          {/* Large hub nodes */}
+          <circle className="mind-node-lg" cx="430" cy="450" r="6" fill="white" filter="url(#softGlow)" />
+          <circle className="mind-node-lg-2" cx="365" cy="350" r="6" fill="white" filter="url(#softGlow)" />
+          {/* Medium nodes */}
+          <circle className="mind-node-a" cx="280" cy="280" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+          <circle className="mind-node-b" cx="450" cy="290" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+          <circle className="mind-node-c" cx="540" cy="360" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+          <circle className="mind-node-d" cx="310" cy="430" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+          <circle className="mind-node-a" cx="370" cy="540" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+          <circle className="mind-node-b" cx="495" cy="530" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+          <circle className="mind-node-c" cx="555" cy="450" r="4" fill="#7ec8ff" filter="url(#softGlow)" />
+        </g>
+
+        {/* Floating ambient particles */}
+        <g fill="rgba(126,200,255,0.6)">
+          <circle className="mind-particle-a" cx="120" cy="500" r="1.5" />
+          <circle className="mind-particle-b" cx="680" cy="200" r="2" />
+          <circle className="mind-particle-c" cx="100" cy="300" r="1" />
+          <circle className="mind-particle-d" cx="700" cy="600" r="1.5" />
+          <circle className="mind-particle-a" cx="730" cy="350" r="1" />
+          <circle className="mind-particle-c" cx="80" cy="600" r="1.5" />
+          <circle className="mind-particle-b" cx="650" cy="100" r="1" />
+        </g>
+
+        {/* Crosshair / scan marker — high-tech medical feel */}
+        <g className="mind-crosshair" stroke="rgba(126,200,255,0.7)" strokeWidth="1" fill="none">
+          <circle cx="400" cy="400" r="270" strokeDasharray="6 80" />
+          <circle cx="400" cy="400" r="270" strokeDasharray="6 80" transform="rotate(45 400 400)" opacity="0.5" />
+        </g>
+
+        {/* Center bullseye marker */}
+        <g stroke="rgba(126,200,255,0.55)" strokeWidth="0.8" fill="none">
+          <circle cx="430" cy="450" r="16" strokeDasharray="2 3" />
+          <line x1="408" y1="450" x2="420" y2="450" />
+          <line x1="440" y1="450" x2="452" y2="450" />
+          <line x1="430" y1="428" x2="430" y2="440" />
+          <line x1="430" y1="460" x2="430" y2="472" />
         </g>
       </svg>
 
@@ -808,7 +917,8 @@ function Members() {
                       <img
                         src={m.photo}
                         alt={m.name}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        style={{ objectPosition: m.photoPos || "top" }}
                       />
                     </div>
                     <div className="mt-4">
