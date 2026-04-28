@@ -359,51 +359,25 @@ function Hero() {
         .mind-acronym-row { animation: mindFadeIn 0.6s ease-out backwards; }
       `}</style>
 
-      {/* Layer 1: Mesh radial gradient — adds organic, dimensional depth */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            radial-gradient(at 18% 25%, #1f6dbf 0%, transparent 55%),
-            radial-gradient(at 80% 30%, #003876 0%, transparent 60%),
-            radial-gradient(at 70% 80%, #0a4d8c 0%, transparent 55%),
-            radial-gradient(at 25% 90%, #001428 0%, transparent 60%)
-          `,
-        }}
+      {/* Hero video — full background, natural width preserves all content */}
+      <video
+        src={import.meta.env.BASE_URL + "hero.mp4"}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        className="block w-full h-auto"
+        aria-hidden="true"
       />
 
-      {/* Layer 2: Horizontal scan lines — medical imaging slice feel */}
-      <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(transparent 50%, rgba(255,255,255,1) 50%)",
-          backgroundSize: "100% 3px",
-        }}
-      />
+      {/* Gradient overlays — keep text readable, fade edges into hero bg */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#001428]/95 via-[#001428]/55 to-[#001428]/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#001428] via-transparent to-transparent pointer-events-none" />
 
-      {/* Layer 3: Hero video — MIND brand animation, plays once and floats */}
-      <div className="absolute right-0 lg:right-12 top-1/2 -translate-y-1/2 w-[65%] sm:w-[55%] lg:w-[50%] max-w-[700px] pointer-events-none">
-        <div className="mind-float">
-          <video
-            src={import.meta.env.BASE_URL + "hero.mp4"}
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-auto"
-            aria-hidden="true"
-          />
-        </div>
-      </div>
-
-      {/* Layer 4: Floating glow orbs — adds 3D depth */}
-      <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-blue-400/15 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 left-1/4 w-[600px] h-[600px] rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 left-10 w-72 h-72 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-32">
-        <div className="max-w-3xl">
+      {/* Text content — overlaid, vertically centered */}
+      <div className="absolute inset-0 z-10 flex items-center">
+        <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
           {/* MIND — large brand mark */}
           <h1 className="text-7xl md:text-[10rem] font-black tracking-tight leading-none">
             <span className="inline-block">M</span>
@@ -447,6 +421,7 @@ function Hero() {
               Recent Publications →
             </a>
           </div>
+        </div>
         </div>
       </div>
     </section>
