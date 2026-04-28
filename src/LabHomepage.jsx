@@ -10,8 +10,8 @@ const LAB_INFO = {
   logo: import.meta.env.BASE_URL + "logo.png",
   affiliation: "Yonsei University College of Medicine · Severance Hospital",
   address: "50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722, Republic of Korea",
-  email: "bial@yuhs.ac",
-  phone: "+82-2-2228-0000",
+  email: "gayeonkim@yuhs.ac",
+  phone: "+82 10-7632-5920",
   vision:
     "Advancing precision medicine through translational neuroimaging and artificial intelligence.",
   subVision:
@@ -45,71 +45,48 @@ const RESEARCH_AREAS = [
   },
 ];
 
-/* 논문 데이터: 연도별로 정리. featured: true 인 논문은 강조 표시됩니다. */
+/* 논문 데이터: 최신 논문이 위쪽 (배열 첫 항목 = No.1 = 가장 최근).
+ * link 필드에 PubMed/DOI URL 채워넣으면 클릭 가능한 링크로 표시됩니다. */
 const PUBLICATIONS = [
-  {
-    year: 2026,
-    items: [
-      {
-        title:
-          "Adaptive denoising of low-dose amyloid PET via uncertainty-guided diffusion models",
-        authors: "Kim G, Lee SW, Park J, et al.",
-        venue: "NeuroImage",
-        link: "#",
-        featured: true,
-      },
-      {
-        title:
-          "Combined PET/MR pipeline for harmonized PSMA quantification across vendors",
-        authors: "Park J, Kim G, et al.",
-        venue: "European Journal of Nuclear Medicine",
-        link: "#",
-        featured: false,
-      },
-    ],
-  },
-  {
-    year: 2025,
-    items: [
-      {
-        title:
-          "Self-supervised representation learning for tau PET staging in early Alzheimer's disease",
-        authors: "Lee SW, Kim G, Cho M, et al.",
-        venue: "Medical Image Analysis",
-        link: "#",
-        featured: true,
-      },
-      {
-        title:
-          "Cross-vendor harmonization of brain MRI using cycle-consistent diffusion",
-        authors: "Cho M, Park J, et al.",
-        venue: "IEEE TMI",
-        link: "#",
-        featured: false,
-      },
-      {
-        title:
-          "A multi-center validation study of automated hippocampal segmentation in dementia",
-        authors: "Kim G, et al.",
-        venue: "Alzheimer's & Dementia",
-        link: "#",
-        featured: false,
-      },
-    ],
-  },
-  {
-    year: 2024,
-    items: [
-      {
-        title:
-          "Deep-learning-based attenuation correction for whole-body PET/MR",
-        authors: "Park J, Lee SW, et al.",
-        venue: "Journal of Nuclear Medicine",
-        link: "#",
-        featured: false,
-      },
-    ],
-  },
+  { title: "Centiloid values from deep learning-based CT parcellation: a valid alternative to FreeSurfer", venue: "Alzheimer's Res. Ther.", link: "" },
+  { title: "Striatal dopamine transporter uptake predicts neuronal hypometabolism and visuospatial function in Parkinson's disease", venue: "Eur. J. Nucl. Med. Mol. Imaging", link: "" },
+  { title: "Automated quantification of brain PET in PET/CT using deep learning-based CT-to-MR translation: a feasibility study", venue: "Eur. J. Nucl. Med. Mol. Imaging", link: "" },
+  { title: "GAN-based Denoising for Scan Time Reduction and Motion Correction of 18F FP-CIT PET/CT: A Multicenter External Validation Study", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "Deep Learning–Based Precontrast CT Parcellation for MRI-Free Brain Amyloid PET Quantification", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "A Neuroimmune-Oncology Microphysiological Analysis Platform (NEO-MAP) for Evaluating Astrocytic Scar Formation and Microgliosis in Glioblastoma Microenvironment", venue: "Adv. Healthc. Mater.", link: "" },
+  { title: "From SUV Ratio to Fill States: Advancing PET Quantification of Alzheimer Disease through Spatial Extent", venue: "Radiology", link: "" },
+  { title: "Cross-Modality Image Translation From Brain 18F-FDG PET/CT Images to Fluid-Attenuated Inversion Recovery Images Using the CypixGAN Framework", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "11C-acetate PET/CT for reactive astrogliosis outperforms 11C-methionine PET/CT in glioma classification and survival prediction", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "Recent Update on PET/CT Radiotracers for Imaging Cerebral Glioma", venue: "Nucl. Med. Mol. Imaging", link: "" },
+  { title: "Are the Nuclear Neuro-Imaging Biomarkers Reliable?", venue: "Nucl. Med. Mol. Imaging", link: "" },
+  { title: "A Key Mediator and Imaging Target in Alzheimer's Disease: Unlocking the Role of Reactive Astrogliosis Through MAOB", venue: "Nucl. Med. Mol. Imaging", link: "" },
+  { title: "Distinct changes in brain metabolism in patients with dementia and hearing loss", venue: "Brain Behav.", link: "" },
+  { title: "Visualizing Cancer-Originating Acetate Uptake Through MCT1 in Reactive Astrocytes in the Glioblastoma Tumor Microenvironment", venue: "Neuro-Oncology", link: "" },
+  { title: "Astrocytic scar restricting glioblastoma via glutamate-MAO-B activity in glioblastoma-microglia assembloid", venue: "Biomater. Res.", link: "" },
+  { title: "Visualizing reactive astrocyte-neuron interaction in Alzheimer's disease using 11C-acetate and 18F-FDG", venue: "Brain", link: "" },
+  { title: "Interrelation of striatal dopamine, brain metabolism and cognition in dementia with Lewy bodies", venue: "Brain", link: "" },
+  { title: "PET/CT for Brain Amyloid: A Feasibility Study for Scan Time Reduction by Deep Learning", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "11C-acetate PET/CT detects reactive astrogliosis helping glioma classification", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "Segmentation of white matter hyperintensities on 18F-FDG PET/CT images with a generative adversarial network", venue: "Eur. J. Nucl. Med. Mol. Imaging", link: "" },
+  { title: "Deep learning-based amyloid PET positivity classification model in the Alzheimer's disease continuum by using 2-[18F]FDG PET", venue: "EJNMMI Res.", link: "" },
+  { title: "Postganglionic sudomotor dysfunction and brain glucose hypometabolism in patients with multiple system atrophy", venue: "J. Parkinsons Dis.", link: "" },
+  { title: "Relationship between Hearing Loss and Dementia Differs According to the Underlying Mechanism", venue: "J. Clin. Neurol.", link: "" },
+  { title: "Slice-selective learning for Alzheimer's disease classification using a generative adversarial network: a feasibility study of external validation", venue: "Eur. J. Nucl. Med. Mol. Imaging", link: "" },
+  { title: "Multi-slice representational learning of convolutional neural network for Alzheimer's disease classification using positron emission tomography", venue: "BioMed. Eng. OnLine", link: "" },
+  { title: "Semantic Segmentation of White Matter in FDG-PET using Generative Adversarial Network", venue: "J. Digit. Imaging", link: "" },
+  { title: "Clinical and Striatal Dopamine Transporter Predictors of Mild Behavioral Impairment in Drug-Naive Parkinson Disease", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "Association of the Non-Motor Burden with Patterns of Striatal Dopamine Loss in de novo Parkinson's Disease", venue: "J. Parkinsons Dis.", link: "" },
+  { title: "Elevated miR-16-5p induces somatostatin receptor 2 expression in neuroendocrine tumor cells", venue: "PLOS ONE", link: "" },
+  { title: "Dysautonomia Is Linked to Striatal Dopamine Deficits and Regional Cerebral Perfusion in Early Parkinson Disease", venue: "Clin. Nucl. Med.", link: "" },
+  { title: "Glucose Loading Enhances the Value of 18F-FDG PET/CT for the Characterization and Delineation of Cerebral Gliomas", venue: "Cancers (Basel)", link: "" },
+  { title: "Dopaminergic depletion, β-amyloid burden, and cognition in Lewy body disease", venue: "Neurology", link: "" },
+  { title: "Clinical and striatal dopamine transporter predictors of β-amyloid in dementia with Lewy bodies", venue: "Neurology", link: "" },
+  { title: "Slice-Consistent 3D Volumetric Brain CT-to-MRI Translation with 2D Brownian Bridge Diffusion Model", venue: "MICCAI 2024", link: "" },
+];
+
+/* 특허 데이터: 데이터가 모이면 항목 추가 */
+const PATENTS = [
+  // { title: "...", number: "...", year: 2025, status: "Granted" },
 ];
 
 /* 직급별 그룹 구조. 같은 그룹 안의 사람은 people 배열에 순서대로.
@@ -442,66 +419,132 @@ function Publications() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
           eyebrow="Publications"
-          title="Selected Publications"
-          description="A curated list of recent peer-reviewed work. ★ indicates featured publications."
+          title="Articles & Patents"
+          description="Peer-reviewed publications from our lab, ordered by recency."
         />
-        <div className="space-y-12">
-          {PUBLICATIONS.map((group) => (
-            <div key={group.year}>
-              <div className="flex items-baseline gap-4 mb-5">
-                <h3 className="text-2xl font-bold text-[#003876]">
-                  {group.year}
-                </h3>
-                <div className="flex-1 h-px bg-slate-200" />
-              </div>
-              <ul className="space-y-3">
-                {group.items.map((p, idx) => (
-                  <li
-                    key={idx}
-                    className={`p-5 rounded-lg border transition-colors ${
-                      p.featured
-                        ? "bg-blue-50/60 border-blue-200"
-                        : "bg-white border-slate-200 hover:border-slate-300"
-                    }`}
-                  >
-                    <div className="flex items-start gap-3">
-                      {p.featured && (
-                        <span className="mt-1 text-amber-500" title="Featured">
-                          ★
-                        </span>
-                      )}
-                      <div className="flex-1">
-                        <a
-                          href={p.link}
-                          className="text-base font-semibold text-slate-900 hover:text-[#003876] leading-snug"
-                        >
-                          {p.title}
-                        </a>
-                        <div className="mt-1 text-sm text-slate-600">
-                          {p.authors}
-                        </div>
-                        <div className="mt-1 text-sm italic text-slate-500">
-                          {p.venue}
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
 
-        <div className="mt-12 text-center">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-white"
-          >
-            View full publication list →
-          </a>
-        </div>
+        <PublicationsTabs />
       </div>
     </section>
+  );
+}
+
+function PublicationsTabs() {
+  const [tab, setTab] = useState("articles");
+  const [showAll, setShowAll] = useState(false);
+
+  const articles = PUBLICATIONS;
+  const patents = PATENTS;
+  const visibleArticles = showAll ? articles : articles.slice(0, 10);
+
+  return (
+    <>
+      {/* Tab buttons */}
+      <div className="flex gap-2 mb-8 border-b border-slate-200">
+        <button
+          onClick={() => setTab("articles")}
+          className={`px-5 py-3 text-sm font-semibold transition-colors border-b-2 -mb-px ${
+            tab === "articles"
+              ? "border-[#003876] text-[#003876]"
+              : "border-transparent text-slate-500 hover:text-slate-800"
+          }`}
+        >
+          Articles <span className="ml-1 text-xs font-mono opacity-60">{articles.length}</span>
+        </button>
+        <button
+          onClick={() => setTab("patents")}
+          className={`px-5 py-3 text-sm font-semibold transition-colors border-b-2 -mb-px ${
+            tab === "patents"
+              ? "border-[#003876] text-[#003876]"
+              : "border-transparent text-slate-500 hover:text-slate-800"
+          }`}
+        >
+          Patents <span className="ml-1 text-xs font-mono opacity-60">{patents.length}</span>
+        </button>
+      </div>
+
+      {/* Articles tab */}
+      {tab === "articles" && (
+        <>
+          <ol className="divide-y divide-slate-200 border-y border-slate-200">
+            {visibleArticles.map((p, i) => {
+              const isLink = p.link && p.link !== "#" && p.link !== "";
+              const Tag = isLink ? "a" : "div";
+              return (
+                <li key={i}>
+                  <Tag
+                    {...(isLink
+                      ? { href: p.link, target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className={`flex gap-5 py-5 group ${
+                      isLink ? "hover:bg-blue-50/40 -mx-4 px-4 rounded-md transition-colors" : ""
+                    }`}
+                  >
+                    <div className="font-mono text-sm text-slate-400 w-10 shrink-0 pt-0.5 group-hover:text-[#003876]">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-slate-900 leading-snug group-hover:text-[#003876] transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm italic text-slate-500">{p.venue}</p>
+                    </div>
+                    {isLink && (
+                      <span className="text-slate-400 group-hover:text-[#003876] self-center">
+                        ↗
+                      </span>
+                    )}
+                  </Tag>
+                </li>
+              );
+            })}
+          </ol>
+
+          {articles.length > 10 && (
+            <div className="mt-8 text-center">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="px-6 py-3 rounded-md border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-white hover:border-[#003876] transition-colors"
+              >
+                {showAll
+                  ? "Show less ↑"
+                  : `Show all ${articles.length} articles ↓`}
+              </button>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Patents tab */}
+      {tab === "patents" && (
+        <div>
+          {patents.length === 0 ? (
+            <div className="py-16 text-center text-slate-500">
+              <p className="text-base">Patent list will be added soon.</p>
+              <p className="mt-2 text-sm">특허 목록은 곧 업데이트될 예정입니다.</p>
+            </div>
+          ) : (
+            <ol className="divide-y divide-slate-200 border-y border-slate-200">
+              {patents.map((p, i) => (
+                <li key={i} className="py-5 flex gap-5">
+                  <div className="font-mono text-sm text-slate-400 w-10 shrink-0 pt-0.5">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-slate-900 leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-slate-500">
+                      {p.number} · {p.year} · {p.status}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 
