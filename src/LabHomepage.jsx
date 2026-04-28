@@ -11,6 +11,7 @@ const LAB_INFO = {
   logo: import.meta.env.BASE_URL + "logo.png",
   affiliation: "Yonsei University College of Medicine · Severance Hospital",
   address: "50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722, Republic of Korea",
+  email: "gayeonkim@yuhs.ac",
   subVision:
     "We develop next-generation imaging biomarkers and deep learning models to better understand the human brain — from molecular pathology to clinical decision-making.",
 };
@@ -681,7 +682,7 @@ function Professor() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-14">
           <div className="md:col-span-1">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-slate-100 ring-1 ring-slate-200">
-              <img src={p.photo} alt={p.name} className="w-full h-full object-cover" />
+              <img src={p.photo} alt={p.name} className="w-full h-full object-cover object-top" />
             </div>
           </div>
           <div className="md:col-span-2 flex flex-col justify-center">
@@ -807,7 +808,7 @@ function Members() {
                       <img
                         src={m.photo}
                         alt={m.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="mt-4">
@@ -935,9 +936,14 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Address</h4>
+            <h4 className="text-white font-semibold text-sm mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-blue-200">
               <li>{LAB_INFO.address}</li>
+              <li>
+                <a href={`mailto:${LAB_INFO.email}`} className="hover:text-white">
+                  {LAB_INFO.email}
+                </a>
+              </li>
             </ul>
           </div>
 
