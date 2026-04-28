@@ -855,15 +855,7 @@ function Footer() {
           <div>© {new Date().getFullYear()} {LAB_INFO.name}. All rights reserved.</div>
           <div>
             Designed & built by{" "}
-            <a
-              href="https://www.notion.so/CV-33dfef5030bc8055ae1dc3500bdc11d9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white font-medium hover:underline"
-            >
-              Gayeon Kim
-            </a>{" "}
-            · © 2026
+            <span className="text-white font-medium">Gayeon Kim</span> · © 2026
           </div>
         </div>
       </div>
