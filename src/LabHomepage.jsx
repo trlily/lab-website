@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 /* ============================================================
  * 데이터 영역 — 이 부분만 수정하면 페이지 내용이 업데이트됩니다.
@@ -317,6 +317,16 @@ function Hero() {
     ["N", "eoplasia & Neurodegeneration"],
     ["D", "iscovery Laboratory"],
   ];
+  const loopRef = useRef(null);
+  const [phase, setPhase] = useState("intro");
+
+  const onIntroEnd = () => {
+    setPhase("loop");
+    if (loopRef.current) {
+      loopRef.current.play().catch(() => {});
+    }
+  };
+
   return (
     <section
       id="home"
@@ -359,20 +369,31 @@ function Hero() {
         .mind-acronym-row { animation: mindFadeIn 0.6s ease-out backwards; }
       `}</style>
 
-      {/* Hero video — full background, natural width preserves all content */}
+      {/* Hero video — full background. Intro plays once, then swaps to gentle boomerang loop */}
       <video
         src={import.meta.env.BASE_URL + "hero.mp4"}
         autoPlay
         muted
         playsInline
         preload="auto"
-        className="block w-full h-auto"
+        onEnded={onIntroEnd}
+        className={`block w-full h-auto ${phase === "loop" ? "hidden" : ""}`}
+        aria-hidden="true"
+      />
+      <video
+        ref={loopRef}
+        src={import.meta.env.BASE_URL + "hero-loop.mp4"}
+        muted
+        playsInline
+        loop
+        preload="auto"
+        className={`w-full h-auto ${phase === "loop" ? "block" : "hidden"}`}
         aria-hidden="true"
       />
 
-      {/* Gradient overlays — keep text readable, fade edges into hero bg */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#001428]/95 via-[#001428]/55 to-[#001428]/25 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#001428] via-transparent to-transparent pointer-events-none" />
+      {/* Lighter gradient overlay — keeps text readable but corners stay visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#001428]/80 via-[#001428]/15 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#001428] via-[#001428]/10 to-transparent pointer-events-none" />
 
       {/* Text content — overlaid, vertically centered */}
       <div className="absolute inset-0 z-10 flex items-center">
