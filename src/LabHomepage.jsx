@@ -317,15 +317,6 @@ function Hero() {
     ["N", "eoplasia & Neurodegeneration"],
     ["D", "iscovery Laboratory"],
   ];
-  const loopRef = useRef(null);
-  const [phase, setPhase] = useState("intro");
-
-  const onIntroEnd = () => {
-    setPhase("loop");
-    if (loopRef.current) {
-      loopRef.current.play().catch(() => {});
-    }
-  };
 
   return (
     <section
@@ -369,25 +360,14 @@ function Hero() {
         .mind-acronym-row { animation: mindFadeIn 0.6s ease-out backwards; }
       `}</style>
 
-      {/* Hero video — full background. Intro plays once, then swaps to gentle boomerang loop */}
+      {/* Hero video — plays once and freezes on last frame (AI panels stay visible) */}
       <video
         src={import.meta.env.BASE_URL + "hero.mp4"}
         autoPlay
         muted
         playsInline
         preload="auto"
-        onEnded={onIntroEnd}
-        className={`block w-full h-auto ${phase === "loop" ? "hidden" : ""}`}
-        aria-hidden="true"
-      />
-      <video
-        ref={loopRef}
-        src={import.meta.env.BASE_URL + "hero-loop.mp4"}
-        muted
-        playsInline
-        loop
-        preload="auto"
-        className={`w-full h-auto ${phase === "loop" ? "block" : "hidden"}`}
+        className="block w-full h-auto"
         aria-hidden="true"
       />
 
