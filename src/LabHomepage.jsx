@@ -890,7 +890,7 @@ function News() {
 function Footer() {
   return (
     <footer id="contact" className="bg-[#001f44] text-blue-100">
-      {/* Partner logo strip */}
+      {/* Partner logo strip — uniform box ensures consistent visual size */}
       <div className="bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 py-12 flex flex-wrap items-center justify-center gap-12 sm:gap-20">
           {PARTNERS.map((p) => (
@@ -899,13 +899,13 @@ function Footer() {
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="opacity-80 hover:opacity-100 transition-opacity"
+              className="flex items-center justify-center w-48 h-20 opacity-80 hover:opacity-100 transition-opacity"
               title={p.nameKr}
             >
               <img
                 src={p.logo}
                 alt={p.name}
-                className="h-20 w-auto object-contain"
+                className="max-w-full max-h-full object-contain"
               />
             </a>
           ))}
