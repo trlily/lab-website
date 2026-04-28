@@ -100,7 +100,7 @@ const MEMBERS = [
         name: "윤미진",
         nameEn: "Mijin Yun, M.D., Ph.D.",
         role: "Principal Investigator",
-        photo: import.meta.env.BASE_URL + "members/mijinyun.png",
+        photo: import.meta.env.BASE_URL + "members/mijinyun_member.png",
         email: "",
         url: "https://medicine.yonsei.ac.kr/medicine/profile-view.do?empNo=eXVoczIwMjBAKUApNMUCjHYvFcRyVa7BDBBLN1WeUDYfW8lJAyhq7OmNQsE%3D",
       },
