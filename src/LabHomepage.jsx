@@ -381,9 +381,9 @@ function Hero() {
         }}
       />
 
-      {/* Layer 3: Sophisticated brain anatomy + neural network */}
+      {/* Layer 3 (LEGACY SVG — replaced by fMRI GIF below) */}
       <svg
-        className="absolute right-0 lg:right-8 top-1/2 -translate-y-1/2 w-[70%] sm:w-[60%] lg:w-[55%] max-w-[760px] opacity-90 pointer-events-none"
+        className="hidden"
         viewBox="0 0 800 800"
         fill="none"
         aria-hidden="true"
@@ -537,6 +537,54 @@ function Hero() {
           <line x1="430" y1="460" x2="430" y2="472" />
         </g>
       </svg>
+
+      {/* Layer 3.5: Real fMRI medical imaging GIF (public domain, NIH) */}
+      <div className="absolute right-2 lg:right-12 top-1/2 -translate-y-1/2 w-[60%] sm:w-[55%] lg:w-[50%] max-w-[680px] pointer-events-none">
+        {/* Soft cyan glow halo behind */}
+        <div
+          className="absolute -inset-12 rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(56,189,248,0.35), rgba(31,109,191,0.15) 50%, transparent 80%)",
+          }}
+        />
+
+        {/* Outer rotating scan ring */}
+        <div className="absolute -inset-6 rounded-2xl border border-cyan-300/15" />
+        <div
+          className="absolute -inset-10 rounded-full border border-cyan-300/10"
+          style={{
+            borderStyle: "dashed",
+            animation: "mindOrbit 60s linear infinite",
+          }}
+        />
+
+        {/* GIF frame */}
+        <div className="relative rounded-2xl overflow-hidden ring-1 ring-cyan-300/25 shadow-[0_0_80px_rgba(56,189,248,0.3)]">
+          <img
+            src={import.meta.env.BASE_URL + "hero-fmri.gif"}
+            alt="Functional MRI of the human brain — high-resolution neural activation"
+            className="w-full h-auto"
+          />
+          {/* Subtle scan-line overlay for that "scope" feel */}
+          <div
+            className="absolute inset-0 mix-blend-overlay opacity-40"
+            style={{
+              backgroundImage:
+                "linear-gradient(transparent 50%, rgba(0,0,0,0.5) 50%)",
+              backgroundSize: "100% 3px",
+            }}
+          />
+          {/* Top vignette gradient for blending into hero */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#001428]/30 via-transparent to-cyan-500/10" />
+        </div>
+
+        {/* Corner markers for "scanner UI" feel */}
+        <div className="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-cyan-300/60" />
+        <div className="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-cyan-300/60" />
+        <div className="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-cyan-300/60" />
+        <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-cyan-300/60" />
+      </div>
 
       {/* Layer 4: Floating glow orbs — adds 3D depth */}
       <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-blue-400/15 blur-3xl pointer-events-none" />
