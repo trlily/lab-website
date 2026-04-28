@@ -230,24 +230,24 @@ const NEWS = [
   },
 ];
 
-/* 파트너 기관: 로고 파일을 public/partners/ 안에 넣고 logo 경로 수정 */
+/* 파트너 기관: 로고 클릭 시 외부 사이트로 이동 */
 const PARTNERS = [
   {
     name: "Yonsei University",
     nameKr: "연세대학교",
-    logo: "https://placehold.co/240x120/ffffff/003876?text=Yonsei+University",
+    logo: import.meta.env.BASE_URL + "partners/yonsei.png",
     url: "https://www.yonsei.ac.kr",
   },
   {
     name: "Yonsei Cancer Center",
     nameKr: "연세대학교 암센터",
-    logo: "https://placehold.co/240x120/ffffff/003876?text=Yonsei+Cancer+Center",
+    logo: import.meta.env.BASE_URL + "partners/yonsei_cancer.png",
     url: "#",
   },
   {
     name: "Severance Hospital",
     nameKr: "세브란스병원",
-    logo: "https://placehold.co/240x120/ffffff/003876?text=Severance+Hospital",
+    logo: import.meta.env.BASE_URL + "partners/yonsei_sev.jpg",
     url: "#",
   },
 ];
@@ -699,39 +699,31 @@ function News() {
   );
 }
 
-function Partners() {
+function Footer() {
   return (
-    <section id="partners" className="py-16 bg-white border-t border-slate-100">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
-        <h2 className="text-center text-xs font-semibold tracking-widest uppercase text-slate-500 mb-10">
-          Partners
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <footer id="contact" className="bg-[#001f44] text-blue-100">
+      {/* Partner logo strip */}
+      <div className="bg-white border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-8 flex flex-wrap items-center justify-center gap-10 sm:gap-16">
           {PARTNERS.map((p) => (
             <a
               key={p.name}
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center p-8 rounded-xl border border-slate-200 bg-white hover:border-[#003876] hover:shadow-md transition-all"
+              className="opacity-70 hover:opacity-100 transition-opacity"
               title={p.nameKr}
             >
               <img
                 src={p.logo}
                 alt={p.name}
-                className="max-h-16 w-auto opacity-70 group-hover:opacity-100 transition-opacity"
+                className="h-12 w-auto object-contain"
               />
             </a>
           ))}
         </div>
       </div>
-    </section>
-  );
-}
 
-function Footer() {
-  return (
-    <footer id="contact" className="bg-[#001f44] text-blue-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
@@ -817,7 +809,6 @@ export default function LabHomepage() {
         <Professor />
         <Members />
         <News />
-        <Partners />
       </main>
       <Footer />
     </div>
