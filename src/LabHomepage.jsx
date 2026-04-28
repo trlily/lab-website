@@ -142,20 +142,20 @@ const MEMBERS = [
   {
     group: "Student Researchers",
     people: [
-      { name: "김대성", nameEn: "Daesung Kim", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "김가연", nameEn: "Gayeon Kim", role: "Student Researcher", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac" },
-      { name: "강희지", nameEn: "Heeji Kang", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "이상민", nameEn: "Sangmin Lee", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
-      { name: "고현진", nameEn: "Hyunjin Ko", role: "Student Researcher", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "김대성", nameEn: "Daesung Kim", role: "MS/PhD", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "김가연", nameEn: "Gayeon Kim", role: "MS/PhD", photo: import.meta.env.BASE_URL + "members/gayeon.png", email: "gayeonkim@yuhs.ac" },
+      { name: "강희지", nameEn: "Heeji Kang", role: "MS", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "이상민", nameEn: "Sangmin Lee", role: "Undergraduate", photo: "https://placehold.co/240x240/1f6dbf/ffffff?text=Photo", email: "" },
+      { name: "고현진", nameEn: "Hyunjin Ko", role: "Undergraduate", photo: import.meta.env.BASE_URL + "members/hyunjin.jpg", email: "" },
     ],
   },
   {
     group: "Researchers",
     people: [
-      { name: "김남헌", nameEn: "Namheon Kim", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "연구원 김", nameEn: "Researcher Kim", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "이명오", nameEn: "Myeongoh Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "이승준", nameEn: "Seungjun Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
-      { name: "홍슬기", nameEn: "Seulgi Hong", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
+      { name: "연구원 홍", nameEn: "Researcher Hong", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "이민지", nameEn: "Minji Lee", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "장나경", nameEn: "Nakyung Jang", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
       { name: "강성진", nameEn: "Sungjin Kang", role: "Researcher", photo: "https://placehold.co/240x240/3b82c4/ffffff?text=Photo", email: "" },
